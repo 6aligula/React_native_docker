@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  react-native:
+    build: .
+    volumes:
+      - .:/app
+      - /dev/bus/usb:/dev/bus/usb
+      - $HOME/.android:/root/.android
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: "host"
+

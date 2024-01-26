@@ -1,0 +1,37 @@
+# Conectarse al contenedor
+docker exec -it reactnativedocker_react-native_1 /bin/bash
+-----------------------------------------------------------------------------------------------------------------------
+# Agregar Asegúrate de que tu Usuario en el Host tenga Permisos para Acceder a USB
+# En tu máquina host, asegúrate de que tu usuario tenga permisos para acceder a los dispositivos USB.
+# Puedes hacerlo agregando tu usuario al grupo docker y al grupo que tenga acceso a USB (generalmente plugdev en Linux).
+# Ejecuta los siguientes comandos en tu máquina host:
+
+sudo usermod -aG plugdev caligula
+sudo usermod -aG docker caligula
+-----------------------------------------------------------------------------------------------------------------------
+
+#comprobar el adb en el host:
+adb devices
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+List of devices attached
+BPN7N18321001239        device
+
+# esta corriendo en local host 
+netstat -an | grep 5037
+tcp        0      0 127.0.0.1:5037          0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:5037          127.0.0.1:46423         TIME_WAIT  
+
+-----------------------------------------------------------------------------------------------------------------------
+Paso 1: Encontrar tu UID y GID
+En tu máquina host, ejecuta los siguientes comandos para encontrar tu UID y GID:
+
+id -u
+id -g
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+Crear proyecto en react native:
+npx react-native init test
+-----------------------------------------------------------------------------------------------------------------------
